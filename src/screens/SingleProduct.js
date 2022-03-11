@@ -1,12 +1,13 @@
 import React from "react";
 import Header from "./../components/Header";
 import Rating from "../components/homeComponents/Rating";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Message from "./../components/LoadingError/Error";
 import products from "../data/Products";
 
 const SingleProduct = ({ match }) => {
-  const product = products.find((p) => p._id === match.params.id);
+  const { id } = useParams();
+  const product = products.find((p) => p._id === Number(id));
   return (
     <>
       <Header />
@@ -14,24 +15,24 @@ const SingleProduct = ({ match }) => {
         <div className="row">
           <div className="col-md-6">
             <div className="single-image">
-              <img src={product.image} alt={product.name} />
+              <img src={products.image} alt={products.name} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="product-dtl">
               <div className="product-info">
-                <div className="product-name">{product.name}</div>
+                <div className="product-name">{products.name}</div>
               </div>
-              <p>{product.description}</p>
+              <p>{products.description}</p>
 
               <div className="product-count col-lg-7 ">
                 <div className="flex-box d-flex justify-content-between align-items-center">
                   <h6>Price</h6>
-                  <span>${product.price}</span>
+                  <span>${products.price}</span>
                 </div>
                 <div className="flex-box d-flex justify-content-between align-items-center">
                   <h6>Status</h6>
-                  {product.countInStock > 0 ? (
+                  {products.countInStock > 0 ? (
                     <span>In Stock</span>
                   ) : (
                     <span>unavailable</span>
@@ -40,11 +41,11 @@ const SingleProduct = ({ match }) => {
                 <div className="flex-box d-flex justify-content-between align-items-center">
                   <h6>Reviews</h6>
                   <Rating
-                    value={product.rating}
-                    text={`${product.numReviews} reviews`}
+                    value={products.rating}
+                    text={`${products.numReviews} reviews`}
                   />
                 </div>
-                {product.countInStock > 0 ? (
+                {products.countInStock > 0 ? (
                   <>
                     <div className="flex-box d-flex justify-content-between align-items-center">
                       <h6>Quantity</h6>
@@ -127,3 +128,7 @@ const SingleProduct = ({ match }) => {
 };
 
 export default SingleProduct;
+
+
+
+

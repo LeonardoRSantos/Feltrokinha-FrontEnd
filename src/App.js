@@ -17,25 +17,36 @@ import NotFound from "./screens/NotFound";
 
 const App = () => {
   return (
-    <div className='App'>
-      <Router>
-        <Routes>
-
-          <Route path="/" component={HomeScreen} exact />
-          <Route path="/products/:id" component={SingleProduct} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/profile" component={ProfileScreen} />
-          <Route path="/cart/:id?" component={CartScreen} />
-          <Route path="/shipping" component={ShippingScreen} />
-          <Route path="/payment" component={PaymentScreen} />
-          <Route path="/placeorder" component={PlaceOrderScreen} />
-          <Route path="/order" component={OrderScreen} />
-          {/* <Route path="*" component={NotFound} /> */}
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<HomeScreen/>}></Route>
+        <Route path="/products/:id" element={<SingleProduct/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
+        <Route path="/profile" element={<ProfileScreen/>}></Route>
+        <Route path="/cart/:id?" element={<CartScreen/>}></Route>
+        <Route path="/shipping" element={<ShippingScreen/>}></Route>
+        <Route path="/payment" element={<PaymentScreen/>}></Route>
+        <Route path="/placeorder" element={<PlaceOrderScreen/>}></Route>
+        <Route path="/order" element={<OrderScreen/>}></Route>
+        <Route path="*" element={<NotFound/>}></Route>
+        
+      </Routes>
+    </Router>
   );
 };
 
+
 export default App;
+
+        /*<Route path="/" element={HomeScreen} exact />
+        <Route path="/products/:id" element={SingleProduct} />
+        <Route path="/login" element={Login} />
+        <Route path="/register" element={Register} />
+        <Route path="/profile" element={ProfileScreen} />
+        <Route path="/cart/:id?" element={CartScreen} />
+        <Route path="/shipping" element={ShippingScreen} />
+        <Route path="/payment" element={PaymentScreen} />
+        <Route path="/placeorder" element={PlaceOrderScreen} />
+        <Route path="/order" element={OrderScreen} />
+        <Route path="*" element={NotFound} />*/
